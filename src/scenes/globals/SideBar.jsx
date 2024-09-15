@@ -79,7 +79,7 @@ const Sidebar = () => {
                 ml="15px"
               >
                 <Typography variant="h4" color={colors.grey[100]}>
-                  ADMINIS
+                  ADMIN
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
