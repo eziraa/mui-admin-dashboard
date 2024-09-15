@@ -2,8 +2,8 @@ import { useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
-import { tokens } from "../../theme";
 import "react-pro-sidebar/dist/css/styles.css";
+import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
@@ -23,23 +23,24 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   return (
     <MenuItem
       active={selected === title}
-      selected={selected === to}
-      onClick={() => setSelected(title)}
-      icon={icon}
       style={{
         color: colors.grey[100],
       }}
+      onClick={() => setSelected(title)}
+      icon={icon}
     >
-      <Typography variant="subtitle1">{title}</Typography>
-      <Link to={to}></Link>
+      <Typography>{title}</Typography>
+      <Link to={to} />
     </MenuItem>
   );
 };
+
 const Sidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [selected, setSelected] = useState("dashboard");
+  const [selected, setSelected] = useState("Dashboard");
+
   return (
     <Box
       sx={{
@@ -78,8 +79,8 @@ const Sidebar = () => {
                 alignItems="center"
                 ml="15px"
               >
-                <Typography variant="h4" color={colors.grey[100]}>
-                  ADMIN
+                <Typography variant="h3" color={colors.grey[100]}>
+                  ADMINIS
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -87,19 +88,16 @@ const Sidebar = () => {
               </Box>
             )}
           </MenuItem>
-          {/* USER */}
+
           {!isCollapsed && (
             <Box mb="25px">
               <Box display="flex" justifyContent="center" alignItems="center">
                 <img
-                  alt="profile-picture"
-                  width="70px"
-                  height="70px"
-                  src="https://avatars.githubusercontent.com/u/72213820?v=4"
-                  style={{
-                    cursor: "pointer",
-                    borderRadius: "50%",
-                  }}
+                  alt="profile-user"
+                  width="100px"
+                  height="100px"
+                  src={`../../assets/user.png`}
+                  style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
               </Box>
               <Box textAlign="center">
@@ -107,19 +105,17 @@ const Sidebar = () => {
                   variant="h2"
                   color={colors.grey[100]}
                   fontWeight="bold"
-                  sx={{
-                    m: "10px 0 0 0 ",
-                  }}
+                  sx={{ m: "10px 0 0 0" }}
                 >
-                  Ezira
+                  Ed Roh
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Admin
+                  VP Fancy Admin
                 </Typography>
               </Box>
             </Box>
           )}
-          {/* MENU ITEMs */}
+
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
               title="Dashboard"
@@ -128,24 +124,23 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
+
             <Typography
               variant="h6"
               color={colors.grey[300]}
-              sx={{
-                m: "15px 0 5px 20px",
-              }}
+              sx={{ m: "15px 0 5px 20px" }}
             >
               Data
             </Typography>
             <Item
-              title="Mange Team"
+              title="Manage Team"
               to="/team"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Conatacts imformation"
+              title="Contacts Information"
               to="/contacts"
               icon={<ContactsOutlinedIcon />}
               selected={selected}
@@ -158,17 +153,16 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
+
             <Typography
               variant="h6"
               color={colors.grey[300]}
-              sx={{
-                m: "15px 0 5px 20px",
-              }}
+              sx={{ m: "15px 0 5px 20px" }}
             >
               Pages
             </Typography>
             <Item
-              title="Profile form"
+              title="Profile Form"
               to="/form"
               icon={<PersonOutlinedIcon />}
               selected={selected}
@@ -188,12 +182,11 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
+
             <Typography
               variant="h6"
               color={colors.grey[300]}
-              sx={{
-                m: "15px 0 5px 20px",
-              }}
+              sx={{ m: "15px 0 5px 20px" }}
             >
               Charts
             </Typography>
