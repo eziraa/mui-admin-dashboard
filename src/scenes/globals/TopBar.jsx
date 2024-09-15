@@ -7,7 +7,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useTheme } from "@emotion/react";
 import { ColorModeContext, tokens } from "../../theme";
 import { useContext } from "react";
-import { Box, Icon, IconButton, InputBase } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
+import InputBase from "@mui/material/InputBase";
 const TopBar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
