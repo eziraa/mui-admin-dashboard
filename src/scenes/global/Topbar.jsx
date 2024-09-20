@@ -1,5 +1,5 @@
 import { Box, IconButton, useTheme } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { ColorModeContext, tokens } from "../../theme";
 import InputBase from "@mui/material/InputBase";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
@@ -13,6 +13,14 @@ const Topbar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
+  const searchRef = useRef(null);
+
+  // Adding side effect handle to  focus the search input
+  useEffect(() => {
+    if (searchRef.current) {
+      searchRef.current.focus(); // Focus the input element
+    }
+  }, []);
 
   return (
     <Box display="flex" justifyContent="space-between" p={2}>
@@ -22,7 +30,11 @@ const Topbar = () => {
         backgroundColor={colors.primary[400]}
         borderRadius="3px"
       >
-        <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" />
+        <InputBase
+          ref={searchRef}
+          sx={{ ml: 2, flex: 1 }}
+          placeholder="Search"
+        />
         <IconButton type="button" sx={{ p: 1 }}>
           <SearchIcon />
         </IconButton>
